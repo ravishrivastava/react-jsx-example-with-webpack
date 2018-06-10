@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -w"
+    "start": "webpack -w",
+    "serve": "webpack-dev-server --content-base public --inline"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "create-react-class": "^15.6.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "webpack": "^1.15.0"
+    "webpack": "^1.15.0",
+    "webpack-dev-server": "^1.16.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
