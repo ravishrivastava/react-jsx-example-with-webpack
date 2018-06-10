@@ -14,10 +14,11 @@ export default class NameList extends React.Component {
 		return(
 			<div>
 				<h3>I am number {this.props.number}</h3>
-				<Welcome firstName="Ravi" lastName="Shrivastava"/>
+				<Welcome firstName="Jeetu" lastName="Shrivastava" originalPhrase={this.props.number}/>
 				<ul>
 				{ this.nameMapper(nameArray) }
 				</ul>
+				<Welcome firstName="Jeetu" lastName="Shrivastava"/>
 			</div>
 		)
 	}
