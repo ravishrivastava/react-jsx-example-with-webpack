@@ -1,18 +1,29 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import Layout from './components/Layout'
-class App extends React.Component {
+import ReactDOM from 'react-dom';
 
-	render(){
-		return(
+import Layout from './components/Layout';
+
+
+class App extends React.Component {
+	
+	
+	render() {
+		return (
 			<div>
-				<Layout/>
+				<Layout />
 			</div>
 		)
 	}
 }
 
-ReactDom.render(
-	<App/>,
+
+ReactDOM.render(
+	<App />,
 	document.getElementById('app')
-)
+);
+
+
+
+
+
+

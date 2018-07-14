@@ -1,37 +1,41 @@
 import React from 'react';
+
 import Button from './Button';
+
 import Timer from './Timer';
 
 export default class Layout extends React.Component {
-	constructor(){
+	constructor() {
 		super();
 		this.state = {
-			firstName: 'chris',
+			firstName: 'Chris',
+			lastName: 'Smith',
 			isTimerMounted: true
 		}
 	}
 
-	changeName(){
+	changeName() {
 		this.setState({
-			firstName: 'jane'
+			firstName: 'Jane'
 		})
 	}
 
-	toggleTimers(){
-		this.setState( prevState => ({
+	toggleTimers() {
+		this.setState(prevState => ({
 			isTimerMounted: !prevState.isTimerMounted
-		}))
+		}));
 	}
 
-	render(){
+	render() {
 		return (
 			<div>
 				<h1>Welcome to my site!</h1>
-				<h2>Happy to have you here :(</h2>
+				<h3>Happy to have you here :( </h3>
 				<h1>{this.state.firstName}</h1>
-				<Button firstName={this.state.firstName} changeName={this.changeName.bind(this)} />
-				<p>We need some paragraph comtent here for our users</p>
-				{ this.state.isTimerMounted ?
+				<Button firstName={this.state.firstName} changeName={this.changeName.bind(this)}/>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pulvinar nulla et quam euismod, quis commodo ligula lobortis. Etiam finibus, metus vel semper varius, ligula ex tristique ligula, sed porta sem sapien at eros.</p>
+				
+				{this.state.isTimerMounted ? 
 					<div>
 						<Timer />
 						<Timer />
@@ -39,10 +43,10 @@ export default class Layout extends React.Component {
 					</div> 
 					: null
 				}
-				
-				<button onClick={this.toggleTimers.bind(this)} > Toggle Timers </button>
-			</div>
 
+				<button onClick={this.toggleTimers.bind(this)}>{this.state.isTimerMounted ? 'Hide' : 'Show'}</button>
+
+			</div>
 		)
 	}
 }

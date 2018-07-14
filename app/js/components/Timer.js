@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { TimerHeader } from './Timer/TimerHeader';
 import TimerButton from './Timer/TimerButton';
 
 export default class Timer extends React.Component {
-	constructor(){
-		super();
+	constructor() {
+		super()
 		this.state = {
 			time: 0,
 			isStarted: false
@@ -12,47 +13,48 @@ export default class Timer extends React.Component {
 		this.handleClick = this.handleClick.bind(this)
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.timer = setInterval(
-			() => this.startTimer()
-			,1000)
+			() => this.startTimer(), 
+			1000)
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.timer)
 	}
 
 	startTimer() {
-		this.setState( prevState => ({
-			time: prevState.time += 1
+		this.setState(prevState => ({
+			time: prevState.time += 1,
 		}))
 		this.setState({
 			isStarted: true
 		})
 	}
 
-	endTimer(){
+	endTimer() {
 		clearInterval(this.timer)
 		this.setState({
 			isStarted: false
 		})
 	}
 
-	handleClick(){
-		this.state.isStarted  ? this.endTimer() : 
-		this.timer = setInterval(
-			() => this.startTimer()
-			,1000)
+	handleClick() {
+		this.state.isStarted ? 
+			this.endTimer() : 
+			this.timer = setInterval(
+			() => this.startTimer(), 
+			1000)
 	}
 
-	componentWillUnmount(){
-		clearInterval(this.timer)
-	}
-
-
-
-	render(){
+	render() {
 		return(
 			<div>
 				<TimerHeader time={this.state.time} />
-				<TimerButton handleClick={this.handleClick} isStarted={this.state.isStarted} />
+				<TimerButton handleClick={this.handleClick} isStarted={this.state.isStarted}/>
 			</div>
 		)
 	}
+
+
 }
