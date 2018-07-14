@@ -6,7 +6,8 @@ export default class Layout extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			firstName: 'chris'
+			firstName: 'chris',
+			isTimerMounted: true
 		}
 	}
 
@@ -16,17 +17,30 @@ export default class Layout extends React.Component {
 		})
 	}
 
+	toggleTimers(){
+		this.setState( prevState => ({
+			isTimerMounted: !prevState.isTimerMounted
+		}))
+	}
+
 	render(){
 		return (
 			<div>
 				<h1>Welcome to my site!</h1>
-				<h2>Happy to have you here :)</h2>
+				<h2>Happy to have you here :(</h2>
 				<h1>{this.state.firstName}</h1>
 				<Button firstName={this.state.firstName} changeName={this.changeName.bind(this)} />
 				<p>We need some paragraph comtent here for our users</p>
-				<Timer />
-				<Timer />
-				<Timer />
+				{ this.state.isTimerMounted ?
+					<div>
+						<Timer />
+						<Timer />
+						<Timer />
+					</div> 
+					: null
+				}
+				
+				<button onClick={this.toggleTimers.bind(this)} > Toggle Timers </button>
 			</div>
 
 		)
