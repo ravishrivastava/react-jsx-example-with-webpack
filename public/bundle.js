@@ -56,7 +56,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Layout = __webpack_require__(30);
+	var _Layout = __webpack_require__(25);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
@@ -20177,12 +20177,7 @@
 	module.exports = camelize;
 
 /***/ }),
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20197,11 +20192,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Button = __webpack_require__(31);
+	var _Button = __webpack_require__(26);
 
 	var _Button2 = _interopRequireDefault(_Button);
 
-	var _Timer = __webpack_require__(32);
+	var _Timer = __webpack_require__(27);
 
 	var _Timer2 = _interopRequireDefault(_Timer);
 
@@ -20274,7 +20269,7 @@
 	exports.default = Layout;
 
 /***/ }),
-/* 31 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20311,8 +20306,8 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'button',
-					{ onClick: this.changeName.bind(this) },
-					'Change me!'
+					{ onClick: this.props.changeName },
+					this.props.firstName
 				);
 			}
 		}]);
@@ -20323,7 +20318,7 @@
 	exports.default = Button;
 
 /***/ }),
-/* 32 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20338,9 +20333,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _TimerHeader = __webpack_require__(33);
+	var _TimerHeader = __webpack_require__(28);
 
-	var _TimerButton = __webpack_require__(34);
+	var _TimerButton = __webpack_require__(29);
 
 	var _TimerButton2 = _interopRequireDefault(_TimerButton);
 
@@ -20361,23 +20356,49 @@
 			var _this = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this));
 
 			_this.state = {
-				time: 0
+				time: 0,
+				isStarted: false
 			};
 			_this.handleClick = _this.handleClick.bind(_this);
 			return _this;
 		}
 
 		_createClass(Timer, [{
-			key: 'handleClick',
-			value: function handleClick() {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
 				var _this2 = this;
 
-				setInterval(function () {
-					_this2.setState(function (prevState) {
-						return {
-							time: prevState.time += 1
-						};
-					});
+				this.timer = setInterval(function () {
+					return _this2.startTimer();
+				}, 1000);
+			}
+		}, {
+			key: 'startTimer',
+			value: function startTimer() {
+				this.setState(function (prevState) {
+					return {
+						time: prevState.time += 1
+					};
+				});
+				this.setState({
+					isStarted: true
+				});
+			}
+		}, {
+			key: 'endTimer',
+			value: function endTimer() {
+				clearInterval(this.timer);
+				this.setState({
+					isStarted: false
+				});
+			}
+		}, {
+			key: 'handleClick',
+			value: function handleClick() {
+				var _this3 = this;
+
+				this.state.isStarted ? this.endTimer() : this.timer = setInterval(function () {
+					return _this3.startTimer();
 				}, 1000);
 			}
 		}, {
@@ -20387,7 +20408,7 @@
 					'div',
 					null,
 					_react2.default.createElement(_TimerHeader.TimerHeader, { time: this.state.time }),
-					_react2.default.createElement(_TimerButton2.default, { handleClick: this.handleClick, time: this.state.time })
+					_react2.default.createElement(_TimerButton2.default, { handleClick: this.handleClick, isStarted: this.state.isStarted })
 				);
 			}
 		}]);
@@ -20398,7 +20419,7 @@
 	exports.default = Timer;
 
 /***/ }),
-/* 33 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20425,7 +20446,7 @@
 	};
 
 /***/ }),
-/* 34 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20463,7 +20484,7 @@
 				return _react2.default.createElement(
 					'button',
 					{ onClick: this.props.handleClick },
-					this.props.time > 5 ? 'Time over 5' : 'Time under 5'
+					this.props.isStarted ? 'Stop timer' : 'Start timer'
 				);
 			}
 		}]);
