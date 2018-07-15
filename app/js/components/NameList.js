@@ -5,7 +5,7 @@ export default class NameList extends React.Component {
 		super();
 		this.state = {
 			names: [],
-			event: 'no event detected.'
+			filterText: ''
 		}
 		this.handleClick = this.handleClick.bind(this);
 		this.nameFilter = this.nameFilter.bind(this);
@@ -19,29 +19,27 @@ export default class NameList extends React.Component {
 
 	handleClick(event){
 		event.preventDefault();
-		this.setState({
-			event: event.type
-		})
 	}
 
 	nameFilter(event){
-		let newNames = this.state.names.filter((name) => {
-			let full_name = `${name.first_name} ${name.last_name}`;
-			return full_name.toLowerCase().includes(event.target.value.toLowerCase())
-		})
 		this.setState({
-			names: newNames
+			filterText: event.target.value
 		})
 	}
 
 	render(){
 		let {names} = this.state;
+		let {filterText} = this.state;
+		if(filterText){
+			names = names.filter((name) => {
+			 	let full_name = `${name.first_name} ${name.last_name}`;
+			 	return full_name.toLowerCase().includes(filterText.toLowerCase())
+			})
+		}
 		return(
 			<div>
  				<h3>{this.state.event}</h3>
- 				<input type="text" 
- 				onChange={this.nameFilter}
- 				/>
+ 				<input type="text" onChange={this.nameFilter} />
 				{ names.map((name) => <h3 key={name.id}><a href='#' onClick={this.handleClick}>{name.first_name} {name.last_name}</a></h3>)}
 			</div>
 		)
