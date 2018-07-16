@@ -15,5 +15,8 @@ module.exports = {
 				loaders: ['react-hot-loader/webpack', 'babel?presets[]=react,presets[]=es2015'],
 			}
 		]
+	},
+	devServer: {
+		historyApiFallback: true
 	}
 }
