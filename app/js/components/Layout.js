@@ -13,8 +13,11 @@ export default class Layout extends React.Component {
 				<header>
 					<h1>Welcome to my site!</h1>
 					<h3>I am inside the header</h3>
-					<Link to="/timer" >Timer</Link>
-					<Link to="/namelist" >Name List</Link>
+					<ul>
+						<li><Link to="/" >Home</Link></li>
+						<li><Link to="/timer" >Timer</Link></li>
+						<li><Link to="/namelist" >Name List</Link></li>
+					</ul>
 				</header>
 					{this.props.children}
 				<footer>
