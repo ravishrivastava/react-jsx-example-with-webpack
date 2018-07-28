@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { TimerHeader } from './Timer/TimerHeader';
-import TimerButton from './Timer/TimerButton';
+import { TimerHeader } from './TimerHeader';
+import TimerButton from './TimerButton';
 
 export default class Timer extends React.Component {
 	constructor() {

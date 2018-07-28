@@ -1,5 +1,6 @@
 import React from 'react';
-import NavList from './NavList';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 
 export default class Layout extends React.Component {
@@ -10,21 +11,10 @@ export default class Layout extends React.Component {
 	render() {
 		return (
 			<div>
-				<header>
-					<h1>Welcome to my site!</h1>
-					<h3>I am inside the header</h3>
-					<ul>
-						<li><NavList to="/" > Home </NavList></li>
-						<li><NavList to="/timer">Timer</NavList></li>
-						<li><NavList to="/names">Name List</NavList></li>
-					</ul>
-				</header>
-					{this.props.children}
-				<footer>
-					<h5>I am the footer</h5>
-				</footer>
+				<Header />				
+				{this.props.children}
+				<Footer />
 			</div>
-
 		)
 	}
 }
