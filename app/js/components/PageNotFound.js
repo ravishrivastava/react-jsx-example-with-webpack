@@ -6,7 +6,7 @@ export default class PageNotFound extends React.Component {
 	}
 	render(){
 		return(
-			<h2>Sorry, this page doesn't exist :( </h2>
+			<h2>Sorry, this page doesn't exist :( </h2>  
 		)
 	}
 }
