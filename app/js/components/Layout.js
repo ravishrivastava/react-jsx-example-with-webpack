@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link , IndexLink } from 'react-router';
 
 
 export default class Layout extends React.Component {
@@ -14,9 +14,9 @@ export default class Layout extends React.Component {
 					<h1>Welcome to my site!</h1>
 					<h3>I am inside the header</h3>
 					<ul>
-						<li><Link to="/" >Home</Link></li>
-						<li><Link to="/timer" >Timer</Link></li>
-						<li><Link to="/names" >Name List</Link></li>
+						<li><IndexLink to="/" activeClassName="active" > Home </IndexLink></li>
+						<li><Link to="/timer" activeClassName="active" >Timer</Link></li>
+						<li><Link to="/names" activeClassName="active" >Name List</Link></li>
 					</ul>
 				</header>
 					{this.props.children}
