@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link , IndexLink } from 'react-router';
+import NavList from './NavList';
 
 
 export default class Layout extends React.Component {
@@ -14,9 +14,9 @@ export default class Layout extends React.Component {
 					<h1>Welcome to my site!</h1>
 					<h3>I am inside the header</h3>
 					<ul>
-						<li><IndexLink to="/" activeClassName="active" > Home </IndexLink></li>
-						<li><Link to="/timer" activeClassName="active" >Timer</Link></li>
-						<li><Link to="/names" activeClassName="active" >Name List</Link></li>
+						<li><NavList to="/" > Home </NavList></li>
+						<li><NavList to="/timer">Timer</NavList></li>
+						<li><NavList to="/names">Name List</NavList></li>
 					</ul>
 				</header>
 					{this.props.children}
