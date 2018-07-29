@@ -7,13 +7,18 @@ export default class ProductRow extends React.Component {
 	}
 
 	render(){
-		let { id, productName, productAdjective, price } = this.props.product;
+		const style = {
+			width: "25%",
+			height: "auto"
+		}
+		const { id, productName, productAdjective, price , image } = this.props.product;
 		return(
-			<div>
+			<div className="pure-u-1 pure-u-md-1-2">
 				<h3><Link to={`/products/${id}`}>{productName}</Link></h3>
 				<ul>
 					<li>{productAdjective}</li>
 					<li>{price}</li>
+					<li><img style={style} className="pure-img" src={image} /></li>
 				</ul>
 			</div>
 		)

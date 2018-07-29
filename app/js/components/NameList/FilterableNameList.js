@@ -40,11 +40,12 @@ export default class FilterableNameList extends React.Component {
 		}
 		return(
 			<div>
- 				<h3>{this.state.event}</h3>
  				<input type="text" onChange={this.nameFilter} />
-				{ names.map((name) => 
-					<NameRow key={name.id} name={name} />
-				)}
+				<div className="pure-g">
+					{ names.map((name) => 
+						<NameRow key={name.id} name={name} />
+					)}
+				</div>
 			</div>
 		)
 	}
