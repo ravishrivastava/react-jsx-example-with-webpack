@@ -8,7 +8,7 @@ export default class ProductProfile extends React.Component {
 	}
 
 	componentWillMount(){
-		let productId = +this.props.params.id;
+		let productId = this.props.id  || +this.props.params.id ;
 		this.product = PRODUCTS.find((product) =>
 			product.id === productId
 		)
@@ -31,6 +31,7 @@ export default class ProductProfile extends React.Component {
 			<div>
 				The <strong>{productName}</strong> has a wonderful {color} color, with inspired {productAdjective} {productMaterial} properties. 
 				<p>{text}</p>
+				<h3>Price: {price}</h3>
 				<img style={style} src={image}/>
 			</div>
 		)
