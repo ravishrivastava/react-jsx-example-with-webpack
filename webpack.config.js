@@ -16,15 +16,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loader: 'style-loader' 
-			},
-			{
-				test: /\.css$/,
-				loader: 'css-loader',
-				query: {
-					modules: true,
-					localIdentName: '[name]_[local]_[hash:base64:5]' 
-				} 
+				loaders: ['style-loader' ,'css-loader?modules=true,localIdentName=[name]_[local]_[hash:base64:5],camelCase=true']
 			}
 		]
 	},
