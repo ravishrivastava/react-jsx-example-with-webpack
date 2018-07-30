@@ -22,7 +22,7 @@ export default class ProductList extends React.Component {
 		console.log(styles);
 		let { products } = this.state;
 		return(
-			<div className={`pure-g ${styles.placeholder}`}>
+			<div className={`pure-g ${styles.products}`}>
 				{ products.map((product) => 
 					<ProductRow key={product.id} product={product} />
 				)}

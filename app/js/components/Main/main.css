@@ -1,0 +1,19 @@
+.background {
+	background: url('http://i.imgur.com/jXvSJS.jpg') no-repeat center center;
+	background-size: cover;
+	height: 200px;
+	width: 100%; 
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+.divider {
+	background-color: #F87431;
+	height: 3px;
+	width: 90%;
+	margin: 20px auto;
+}
