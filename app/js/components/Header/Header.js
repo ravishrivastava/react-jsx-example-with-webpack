@@ -1,5 +1,6 @@
 import React from 'react';
 import NavList from './NavList';
+import styles from './header.css';
 
 
 export default class Header extends React.Component {
@@ -9,7 +10,7 @@ export default class Header extends React.Component {
 
 	render() {
 		  return(
-		    <div className="pure-menu pure-menu-horizontal">
+		    <div className={`pure-menu pure-menu-horizontal ${styles.nav}`}>
 		    <NavList to="/" className="pure-menu-heading pure-menu-link"> Home </NavList>
 	   	 		<ul className="pure-menu-list">
 					<li className="pure-menu-item"><NavList to="/products" className="pure-menu-link">Product List</NavList></li>
@@ -19,13 +20,3 @@ export default class Header extends React.Component {
 		  )
 	}
 }
-
-
-<div class="pure-menu pure-menu-horizontal">
-    <a href="#" class="pure-menu-heading pure-menu-link">BRAND</a>
-    <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="#" >News</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a></li>
-    </ul>
-</div>
